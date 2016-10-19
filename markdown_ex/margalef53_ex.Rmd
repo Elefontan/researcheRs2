@@ -1,0 +1,168 @@
+---
+title: "Ramon Margalef e o fitoplancto da Ría de Vigo"
+author: ""    # alguén
+date: ""      # data actual
+output:       # declara o formato de saída a html
+bibliography: # declara a fonte de bibliografía
+---
+
+<!--- outórgalle un nome ao bloque de código --->
+<!--- define que nin se inclúa nin advirta erros no documento final --->
+```{r}
+options(digits=2)
+setwd("")
+
+# # Load packages
+# is.installed <- function(pkg){
+#   is.element(pkg, installed.packages()[,1])
+#   }
+#
+# if (!is.installed("pkg")){
+#   install.packages("pkg")
+# }
+
+require(vegan)
+require(xtable)
+require(knitcitations)
+
+## Bibliografía
+# primeiro, límpase a biliografía previa que houbese
+cleanbib()
+# establécese opcións e fonte a
+options("citation_format" = "pandoc")
+refs <- read.bibtex("./bibliografia/margalef.bib")
+```
+
+<!--- outórgalle un nome ao bloque de código --->
+<!--- define que nin se inclúa nin advirta erros no documento final --->
+```{r}
+# Obter datos
+tabII <- read.csv("./datos/tabII.csv", sep=";")
+tabII[is.na(tabII)] <- 0
+str(tabII)
+
+fito <- tabII[,2:ncol(tabII)]
+rownames(fito) <- tabII[,1]
+```
+
+<!---Define todas as seccións, subseccións... do documento--->
+
+<!--- título principal --->
+- Ramon Margalef: Os primeiros estudos na Ría de Vigo
+<!--- título secundario --->
+- Ramon Margalef
+
+<!---Introduce cursivas e negra, busca ligazóns rotas...--->
+Se nos pedisen destacar un ecólogo dos máis revolucionarios dende o nacemento desta disciplina, poderiamos nomear a Alfred R. Wallace** ou a Charles Darwin. Mais de ningún xeito nos poderíamos esquecer de Ramon Margalef i López (Barcelona, 1919-2004). Este catalán, apaixoado da historia e diversidade natural, comezou de mozo a súa carreira debuxando especies dos xardíns botánicos barceloneses. Pero a guerra civil truncoulle ese comezo na investigación e levouno á batalla do Ebro. Por enfermidade, e quen sabe se por sorte, nesa guerra civil foi levado a Mallorca. Alí coñeceu á súa muller e a súa paixón polo fitoplancto (https://gl.wikipedia.org/wiki/Fitoplancto). Fíxoo no daquela nacente Instituto Español de Oceanografía, que traballaba no arquipélago mostreando e analizando o papel que xogan este pequenos microorganismos fotosintetizadores na ecoloxía das costas. Acabada a guerra, seguiu neste campo de investigación, no que alí comezara. No ano 1949 chegou a se doutorar, por ter traballado no estudo da temperatura na estrutura das comunidades de fitoplancto. Daquela, incorporouse ao novo Instituto de Investigacións Pesqueiras barcelonés trala súa na súa creacións. Dende alí, foi quen de lle dar nome ao instituto na Ciencia. As súas investigacións nos portos de Blanes, Cádiz, Castelló e Vigo foron pioneiras. Nelas estudou, con moitos de compañeiros e multitude de atraques de porto, cal é a limnoloxía desas costas e cal é a ecoloxía do seu fitoplancto. Foi o primeiro ecólogo do estado en ser nomeado, no 1967, catedrático de Ecoloxía, pola Universitat de Barcelona.
+
+O seus máis importantes traballos foron a aplicación da teoría da información na ecoloxía e a creación de modelos matemáticos para o estudo de poboacións. Entre as súas obras bibliográficas destacan: Comunidades naturais (1962), Perspectivas na teoría ecolóxica, Ecoloxía (1974), A biosfera (1980), Limnoloxía (1983) e A teoría dos sistemas ecolóxicos (1991). Porén, por riba de calquera delas, está a súa obra Sobre dalgúns principios da teoría ecolóxica (1963). Ese libro é considerado unha das dez principais publicacións da bioloxía do século XX, pois puxo sobre de papel os principais conceptos desta materia.
+
+<!--- completa a dirección da imaxe (o seu cartafol) --->
+![Imaxe conmemorativa de actos tralos dez anos da Morte de Ramón Margalef celebrados na [Universidade de Barcelona](www.ub.edu/)]()
+
+Recibiu multitude de premios científicos, como foron a primeira edición dos Premios A.G Huntsman para a Excelencia nas Ciencias Mariñas ou Medalla de Naumann-Thienemann e formou parte de sociedades como a Reial Acadèmia de Ciències i Arts catalana ou da Real Academia Galega de Ciencias.
+
+- Os seus estudos na Ría de Vigo
+Margalef publicou unha ampla cantidade de estudos da Ría de Vigo: doce publicacións só na década do 1950. Neles describe a composición e variacións nas poboacións de fitoplancto e rotíferos, a dinámica poboacional e as sucesións, a pesquería e a sedimentación, e ata á limnoloxía e paleontoloxía da ría.
+
+Os estudos máis relevantes describen a composición taxonómica do fitoplancto da ría, o seu ciclo anual e a súa proposta da hipótese da relación entre a turbulencia e a composición taxonómica destas comunidades `r citep(refs[c(1,2,4)])`. O estudo de Margalef «El fitoplancton de la ría de Vigo» (1955) describe por primeira vez o proceso do fenómeno de sucesión nas comunidades fitoplancto en relación con factores ambientais, asentándose nas observacións feitas nas rías galegas `r citep(refs[[3]])`. Defíneo como un proceso de tres etapas que abrangue arredor de tres meses, no cal durante a primeira etapa xorden as diatomeas de pequeno tamaño, logo as diatomeas máis grandes e algúns dinoflaxelados e finalmente péchase o ciclo co predominio de dinoflaxelados, dominantes no verán.
+
+No verán do ano 1953 a visita de Margalef á ría, para estudos nesta, coincidiu cunha marea vermella. Grazas a iso, estudou o ata daquela coñecido vulgarmente como a purga do mar e publicou os resultados nun artigo do 1956. Incide, iso si, sobre do nome do fenómeno ao mencionar que «...preferimos a denominación hematotalasia introducida por Sobrino (1918), o primero autor español que escribiu sensatamente acerca diso».
+
+Todas as mostraxes dos traballos de Margalef na Ría de Vigo realizounas a bordo da pequena embarcación chamada Lampadena. Neses momentos esa embarcación acabara de chegar ao laboratorio de Vigo do Instituto de Investigacións Pesqueiras, e que é o actual Instituto de Investigacións Mariñas de Vigo.
+
+- Fitoplancto da ría de Vigo, 1951-52
+
+En «Microplancto de Vigo, de xaneiro do 1951 a setembro do 1952», Ramon Margalef e Miguel Durán publican un dos primeiros artigos que describen taxonómicamente o fitoplancto da ría e analizan a súa dinámica de cambios na estrutura da comunidade.
+
+<!-- título en negra --->
+Táboa II Fitoplancto da Ría de Vigo, 1951-52
+
+<!-- lenda en cursiva --->
+Número de células por 1000 células de dinoflagelada. Cifras aproximadas calculadas sobre dos totais mensuais
+
+| Spp  | X-1951 | XI-1951 | XII-1951 | I-1951 |
+| --- | ---: | :---: | ---: |  ---: |
+| _P subinerme+punct._ | 2 | 8 | 5 | 3 |
+| _Peridinium trochoideum_ | 5 |  |  |  |
+| _Gonyaulax polyedra_  | | 2 | 13 | 11 |
+| _Ceratium buceros_  | | 2 |  |  |
+| _Ceratium tripos_ | 162 | 14 | 8 | 5 |
+| _Coscinodiscus Granii_ | 5 | 180 | 858 | 242 |
+| _Guinardia flaccida_  | |  | 4 | 5 |
+| _Bacteriastrum hyalinum_ | 54 | 9 | 29 | 121 |
+| _Chaetoceros brevis_ | 3 |  |  |  |
+| _Chaetoceros radians+sociale_ | 3200 | 66 |  |  |
+| _Eucampia zoodiacus_ | 5 | 47 |  |  |
+| _Biddulphia mobiliensis_ | 2 | 15 | 13 | 16 |
+| _Rhabdanema+Striatella+Grammatophora_ | 2 | 2 | 8 | 9 |
+| _Nitzschia seriata_ | 29 | 94 | 9 | 913 |
+| _Outras diatomeas_ | 4 | 7 | 13 | 33 |
+
+
+<!-- outórgalle un nome ao bloque de código -->
+<!-- defíneo para que nin mostre saídas nin apareza no texto final-->
+
+```{r, echo=TRUE,include=TRUE, warning=TRUE}
+# Cálculo da riqueza de especies
+riqSp <- function(comm){
+  require(vegan)
+  S <- c()
+  for(i in 1:ncol(comm))
+    S[i] <- specnumber(comm[,i])
+  return(S)
+}
+riqSp51 <- riqSp(fito)
+
+#  vegan::diversity para obter os índices de diversidade de Shannon e Simpson
+simpson <- c()
+for(i in 1:ncol(fito)){
+  simpson[i] <- diversity(fito[i], index="simpson")
+}
+shannon <- c()
+for(i in 1:ncol(fito)){
+  shannon[i] <- diversity(fito[i], index="shannon")
+}
+```
+
+<!-- hai cálculos nestas líñas: ordénalle a R que os interprete --->
+Dos r ncol(fito) feitos entre o 1951 e 1952 na ría de Vigo, Margalef e compañeiros observaron entre r min(riqSp51) e r max(riqSp51) especies de fitoplancto despois de recontar unha media de r sum(fito) de diatomeas (https://gl.wikipedia.org/wiki/Diatomeas) e dinoflaxelados (https://gl.wikipedia.org/wiki/Dinoflaxelados).
+
+Unha representación dos cambios da estrutura da comunidade, dánnola os índices de Shannon e Simpson, que miden canta dominancia ou paridade existe nas comunidades. A definición matemática destes índices é:
+
+<!-- Introduce os limitadores de fórmulas que consideres -->
+- índice de Simpson: <!-- \lambda' = -\sum_{i=1}^S p_i^2 -->
+- índice de Shannon: <!-- H' = -\sum_{i=1}^S p_i \ln p_i -->
+
+<!-- hai cálculos nestas líñas: ordénalle a R que os interprete --->
+O mostreo na Ría no que se apreza unha maior dominancia de especies, produciuse no r colnames(fito[simpson==max(simpson)]) mes do 1952.
+
+<!--- dálle o valor axeitado a 'echo' --->
+```{r fdiv, comment=NA, results='asis'}
+fdiv <- data.frame(Species=riqSp51,Simpson=simpson,Shannon=shannon)
+rownames(fdiv) <- colnames(fito)
+
+print(xtable(fdiv), type = "html", include.rownames = T)
+```
+
+O repetido número de mostreos mostra como existe unha cantidade de especies raras, difíciles de obter cunha soa saída de recollida na Ría. Vese por iso como as curvas de acumulación de especies revelan o patrón típico dunha comunidade rica en especies raras, ou de baixas abundancias.
+
+<!--- dálle un ancho e alto ás imaxes da saída -->
+```{r sac, echo=TRUE, warning=TRUE}
+sac <- specaccum(t(fito))
+plot(sac$sites, sac$richness, type="l", lwd=2, col="deepskyblue4",
+     xlab="Saídas de mostreo", ylab="Species observadas",
+     main="SAC - Curva de acumulación de especies")
+```
+
+Un gráfico de Wittaker ou de Rango-Abundancia pon de manifesto como son só unhas poucas especies as que dominan a comunidade fitoplanctónica.
+
+<!--- dálle un ancho e alto ás imaxes da saída -->
+```{r wittaker, echo=TRUE, warning=TRUE}
+barplot(sort(as.vector(rowSums(fito)), decreasing=TRUE),
+        xlab="Especies por orde de abundancia",
+        ylab="Individuos")
+```
+
+# Bibliografía
+<!--- xérate! --->
