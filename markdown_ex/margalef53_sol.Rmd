@@ -2,7 +2,9 @@
 title: "Ramon Margalef e o fitoplancto da Ría de Vigo"
 author: "M. Branco"
 date: "20 de outubro de 2016"
-output: html_document
+output:
+  html_document:
+    css: estilo.css
 bibliography: ./bibliografia/margalef.bib
 ---
 
@@ -146,5 +148,3 @@ barplot(sort(as.vector(rowSums(fito)), decreasing=TRUE),
 
 # Bibliografía
 <!--- xérate! --->
-
-

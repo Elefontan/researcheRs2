@@ -288,6 +288,146 @@ h1 { font-weight: 400;
   font-size: 3.2rem;
   line-height: 1; }
 ```
+##### Creación de táboas
+
+Librarías como [`xtable`](https://cran.r-project.org/web/packages/xtable) permiten a visualización de táboas, a creación de táboas de resultados e informes estatísticos para documentos HTML e LaTeX.
+
+Con datos de mostraxes en dunas neerlandesas e `xtable`:
+```
+library(xtable)
+data(dune.env) # de vegan()
+str(dune.env)
+# 'data.frame':	20 obs. of  5 variables:
+#  $ A1        : num  2.8 3.5 4.3 4.2 6.3 4.3 2.8 4.2 3.7 3.3 ...
+# $ Moisture  : Ord.factor w/ 4 levels "1"<"2"<"4"<"5": 1 1 2 2 1 1 1 4 3 2 ...
+# $ Management: Factor w/ 4 levels "BF","HF","NM",..: 4 1 4 4 2 2 2 2 2 1 ...
+# $ Use       : Ord.factor w/ 3 levels "Hayfield"<"Haypastu"<..: 2 2 2 2 1 2 3 3 1 1 ...
+# $ Manure    : Ord.factor w/ 5 levels "0"<"1"<"2"<"3"<..: 5 3 5 5 3 3 4 4 2 2 ...
+```
+
+Pódense obter informes dos resultados de regresión lineal, modelos xerais linearizados ou de análise de varianza. Como exemplo, cos datos de `dune.env` aplícase unha `lm()` e `ANOVA()` e obtense directamente unha táboa de datos en formato `html`:
+
+```
+# Obter o resumo dunha regresión lineal.
+fml <- lm(A1 ~ Management * Use, data = dune.env)
+print(xtable(anova(fml)), type="html")
+# <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+#   <table border=1>
+#   <tr> <th>  </th> <th> Df </th> <th> Sum Sq </th> <th> Mean Sq </th> <th> F value </th> <th> Pr(&gt;F) </th>  </tr>
+#   <tr> <td> Management </td> <td align="right"> 3 </td> <td align="right"> 17.15 </td> <td align="right"> 5.72 </td> <td align="right"> 4.31 </td> <td align="right"> 0.0383 </td> </tr>
+#   <tr> <td> Use </td> <td align="right"> 2 </td> <td align="right"> 17.26 </td> <td align="right"> 8.63 </td> <td align="right"> 6.50 </td> <td align="right"> 0.0179 </td> </tr>
+#   <tr> <td> Management:Use </td> <td align="right"> 5 </td> <td align="right"> 43.88 </td> <td align="right"> 8.78 </td> <td align="right"> 6.62 </td> <td align="right"> 0.0075 </td> </tr>
+#   <tr> <td> Residuals </td> <td align="right"> 9 </td> <td align="right"> 11.94 </td> <td align="right"> 1.33 </td> <td align="right">  </td> <td align="right">  </td> </tr>
+#   </table>
+
+# Obter o resumo dunha ANOVA
+print(xtable(anova(fml)), type="html", include.rownames = TRUE)
+# <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+# <table border=1>
+# <tr> <th>  </th> <th> Df </th> <th> Sum Sq </th> <th> Mean Sq </th> <th> F value </th> <th> Pr(&gt;F) # </th>  </tr>
+#  <tr> <td> Management </td> <td align="right"> 3 </td> <td align="right"> 17.15 </td> <td align="right"> 5.72 </td> <td align="right"> 4.31 </td> <td align="right"> 0.0383 </td> </tr>
+#  <tr> <td> Use </td> <td align="right"> 2 </td> <td align="right"> 17.26 </td> <td align="right"> 8.63 </td> <td align="right"> 6.50 </td> <td align="right"> 0.0179 </td> </tr>
+#  <tr> <td> Management:Use </td> <td align="right"> 5 </td> <td align="right"> 43.88 </td> <td align="right"> 8.78 </td> <td align="right"> 6.62 </td> <td align="right"> 0.0075 </td> </tr>
+#  <tr> <td> Residuals </td> <td align="right"> 9 </td> <td align="right"> 11.94 </td> <td align="right"> 1.33 </td> <td align="right">  </td> <td align="right">  </td> </tr>
+#   </table>
+```
+
+Outra librería é `[pander](http://rapporter.github.io/pander/)`. Esta crea directamente resumos no formato Markdown.
+
+```
+# Táboas de datos
+pandoc.table(head(dune.env))
+
+# ----------------------------------------------
+#  A1   Moisture   Management    Use     Manure
+# ---- ---------- ------------ -------- --------
+# 2.8      1           SF      Haypastu    4    
+#
+# 3.5      1           BF      Haypastu    2    
+#
+# 4.3      2           SF      Haypastu    4    
+#
+# 4.2      2           SF      Haypastu    4    
+#
+# 6.3      1           HF      Hayfield    2    
+#
+# 4.3      1           HF      Haypastu    2    
+# ----------------------------------------------
+
+# Defindo o estilo da táboa
+pandoc.table(head(dune.env), style = "grid", caption = "Dunas neerlandesas")
+
+# +------+------------+--------------+----------+----------+
+# |  A1  |  Moisture  |  Management  |   Use    |  Manure  |
+# +======+============+==============+==========+==========+
+# | 2.8  |     1      |      SF      | Haypastu |    4     |
+# +------+------------+--------------+----------+----------+
+# | 3.5  |     1      |      BF      | Haypastu |    2     |
+# +------+------------+--------------+----------+----------+
+# | 4.3  |     2      |      SF      | Haypastu |    4     |
+# +------+------------+--------------+----------+----------+
+# | 4.2  |     2      |      SF      | Haypastu |    4     |
+# +------+------------+--------------+----------+----------+
+# | 6.3  |     1      |      HF      | Hayfield |    2     |
+# +------+------------+--------------+----------+----------+
+# | 4.3  |     1      |      HF      | Haypastu |    2     |
+# +------+------------+--------------+----------+----------+
+#
+# Title: Dunas neerlandesas
+```
+Aquí vemos os mesmos informes de `lm()` e `ANOVA()` mais con saída para `md` con pander:
+
+```
+# fml <- lm(A1 ~ Management * Use, data = dune.env)
+# Resultados da regresión lineal:
+pander(fml, caption = attr(x, "caption"),
++ add.significance.stars = TRUE)
+
+# ---------------------------------------------------------------------------
+#          &nbsp;           Estimate   Std. Error   t value   Pr(>|t|)       
+# ------------------------ ---------- ------------ --------- ---------- -----
+#    **ManagementHF**        0.83        0.86       0.97       0.36         
+#
+#    **ManagementNM**        4.8         0.88        5.5     0.00039   * * *
+#
+#    **ManagementSF**        1.1         1.3        0.89       0.4          
+#
+#       **Use.L**            0.14        1.2        0.12       0.9          
+#
+#       **Use.Q**           -0.082       1.2       -0.071      0.95         
+#
+# **ManagementHF:Use.L**     -1.2        1.4        -0.85      0.42         
+#
+# **ManagementNM:Use.L**     3.6         1.5         2.5      0.035      *  
+#
+# **ManagementSF:Use.L**     1.5         2.9        0.52       0.61         
+#
+# **ManagementHF:Use.Q**    0.041        1.6        0.026      0.98         
+#
+# **ManagementNM:Use.Q**     -3.9        1.6        -2.5      0.035      *  
+#
+#    **(Intercept)**         3.4         0.66        5.2     0.00059   * * *
+# ---------------------------------------------------------------------------
+#
+# Table: Fitting linear model: A1 ~ Management * Use
+
+# ANOVA
+pander(anova(fml))
+
+# ---------------------------------------------------------------
+#        &nbsp;         Df   Sum Sq   Mean Sq   F value   Pr(>F)
+# -------------------- ---- -------- --------- --------- --------
+#    **Management**     3      17       5.7       4.3     0.038  
+#
+#       **Use**         2      17       8.6       6.5     0.018  
+#
+#  **Management:Use**   5      44       8.8       6.6     0.0075
+#
+#    **Residuals**      9      12       1.3       NA        NA   
+# ---------------------------------------------------------------
+#
+# Table: Analysis of Variance Table
+```
 
 #### Procesado dos ficheiros R Markdown
 
@@ -481,7 +621,28 @@ fs_make_private(id)
 # ou públicos
 fs_make_public(id)
 ```
-### IV. Recursos xerais e de R para ciencia
+### IV. Instalación
+<!---
+Información de sistema operativo libre
+--->
+<!---
+rstudio; rmarkdown
+rkward
+--->
+
+<!---
+http://pandoc.org/installing.html
+--->
+
+<!---
+Zotero
+--->
+
+<!---
+info sobre LaTeX en linux, windows
+--->
+
+### V. Recursos xerais e de R para ciencia
 
 
 1.	[R for Data Science. Garrett Grolemund & Hadley Wickham. O'Reilly 2016](http://r4ds.had.co.nz/)
