@@ -4,14 +4,14 @@ Reproducibilidade en ciencia con R: da minaría de datos á publicación
 ### Introdución
 
 #### Que é iso da reprodubibilidade?
+Un aspecto fundamental do [método científico](https://gl.wikipedia.org/wiki/Método_científico) é comprobar que a partir dun método ou procedemento, cun mesmo protocolo, se obteñan os mesmos resultados, ou outros consistentes, e se constraste a validez dunha hipótese. Porén, moita da literatura científica carece duns métodos ben detallados ou dos datos como para que [outros grupos científicos os poidan repetir](http://arstechnica.com/science/2016/03/social-science-reproducibility-not-great-but-not-as-bad-as-reported/) e comprobar. O mesmo acontece co código fonte de procesamento de datos e de análises estatísticas.
 
-Un aspecto fundamental do [método científico](https://gl.wikipedia.org/wiki/Método_científico) é comprobar que a partir dun procedemento ou método para comprobar unha hipótese se obteñen os mesmos resultados seguindo o mesmo protocolo, ou resultados consistentes con esta. Porén, moita da literatura científica carece ou ben dos métodos ou ben dos datos como para que [outros grupos científicos os poidan repetir](http://arstechnica.com/science/2016/03/social-science-reproducibility-not-great-but-not-as-bad-as-reported/) e comprobar.
-
-[R](https://gl.wikipedia.org/wiki/R_(linguaxe_de_programación)) conta actualmente con múltiples paquetes orientados aos diferentes puntos que van dende a obtención e análise de datos, á publicacións destes. Con isto, R conta xa con recursos sufientes [como para realizar análises de datos completamente reproducibles](https://methodsblog.wordpress.com/2016/08/02/reproducibility/). En [CRAN Task View: Reproducible Research](https://cran.r-project.org/) hai un listado dos paquetes que cobren estes aspectos.
+Agora ben, a linguaxe [R](https://gl.wikipedia.org/wiki/R_(linguaxe_de_programación)) xa conta actualmente con múltiples paquetes orientados aos diferentes puntos que van desde a obtención e análise de datos á publicacións destes. R conta xa con recursos sufientes [como para realizar análises de datos completamente reproducibles](https://methodsblog.wordpress.com/2016/08/02/reproducibility/). En [CRAN Task View: Reproducible Research](https://cran.r-project.org/) hai un listado dos paquetes que cobren estes aspectos.
 
 #### Fontes de datos
+Existen proxectos de escala global, por estaren implicados neles diferentes laboratorios ou ser de obxectivos desta escala, e [xornais científicos](http://journals.plos.org/plosone/s/data-availability) que están depositando código e datos dos seus estudos.
 
-Existen proxectos de escala global, por estaren implicados neles diferentes laboratorios ou ser de obxectivos desta escala, e [xornais científicos](http://journals.plos.org/plosone/s/data-availability) nos que están solicitando os datos (por obriga ou de xeito voluntario) que se empregaron para elaborar as publicacións. Os repositorios onde se publican supoñen unha interesante fonte de datos para replicar eses estudos ou crear outros novos proxectos científicos coa mesma base. En case todos, o formato e [as licenzas dos datos](https://wiki.creativecommons.org/wiki/Data) permiten a súa reutilización.
+Isto é ben porque os xornais os están solicitando os datos que se empregaron para elaborar as publicacións, e que os autores ben por obriga ben de xeito voluntario publican. Os repositorios onde se publican supoñen unha interesante fonte de datos para replicar eses estudos, e confirmar as hipótese contrastadas, e para crear outros novos proxectos científicos coa mesma base. En case todos, o formato e [as licenzas dos datos](https://wiki.creativecommons.org/wiki/Data) permiten a súa reutilización. [A cuestión do software libre](https://www.gnu.org/philosophy/philosophy.html) [está a chegar á ciencia](http://www.unesco.org/new/en/communication-and-information/access-to-knowledge/open-access-to-scientific-information/).
 
 Arestora, algunhas das principais bases de almacenamento de datos científicos son:
 
@@ -29,10 +29,9 @@ Arestora, algunhas das principais bases de almacenamento de datos científicos s
 12.	[SEOANE](Sea scientific open data publication) base de datos aberta de datos científicos
 13.	[Archaeological Data Service](http://archaeologydataservice.ac.uk/) Base de datos de rexistros arqueolóxicos.
 
-e un longo etcétera!. Nas suxestións do xornal PLOS temos [unha lista máis detallada e completa](http://journals.plos.org/plosone/s/data-availability#loc-recommended-repositories) de repositorios interesantes para publicar/obter datos.
+e un longo etcétera!. Nas suxestións do xornal [PLOS](https://www.plos.org/) temos [unha lista máis detallada e completa](http://journals.plos.org/plosone/s/data-availability#loc-recommended-repositories) de repositorios interesantes para publicar/obter datos.
 
 #### Recursos para a minería e tratamento de datos
-
 Un proxecto que aglutina a xente da ciencia involucrada nos *datos abertos* é [rOpenSci](https://ropensci.org/). Desenvolven paquetes de R coa intención de cubrir as funcionalidades de obtención, tratamento, visualización e publicación de datos. En [rOpenSci](https://ropensci.org/packages/) podemos atopar unha lista de paquetes de R que crearon no proxecto. Algúns a destacar:
 
 -	Publicación de datos: *rFigshare* - interface de [Figshare](https://figshare.com/)
@@ -55,7 +54,7 @@ read.csv("https://www.itis.gov/FilesToBeDownloaded/5234.csv")
 # $ X.TU..1012247..Giraffa..tippelskirchi.....N.valid..TWG.standards.met...0.2016.09.27.15.10.48.898184..71024..0.5.220.No.: Factor w/ 219 levels " 1758|5|"," 1762 has been conserved (Opinion 1894",..: 173 174 175 176 177 178 179 180 181 182 ...
 ```
 
-Unha opción interesante é a obtención directa de datos de **[Dryad](http://datadryad.org/)** con rDryad, que está actualmente en continuo desenvolvemento. Para unha información completa e actualizada, ide a [CRAN](https://cran.r-project.org/web/packages/rdryad/README.html) e [github](https://github.com/ropensci/rdryad).
+Unha opción interesante é a obtención directa de datos de **[Dryad](http://datadryad.org/)** con `rDryad`, que está actualmente en continuo desenvolvemento. Para unha información completa e actualizada, ide a [CRAN](https://cran.r-project.org/web/packages/rdryad/README.html) e [github](https://github.com/ropensci/rdryad).
 
 ```
 # Obter rDryad, versión de desenvolvemento
@@ -107,7 +106,6 @@ fl="dc.identifier,dc.title_ac")
 ### II. Edición con R Markdown
 
 #### Markdown
-
 **[Markdown](https://daringfireball.net/projects/markdown/)** é unha [linguaxe de marcas](https://gl.wikipedia.org/wiki/Linguaxe_de_marcas) en formato de [texto simple](https://en.wikipedia.org/wiki/Plain_text). Deseñouse para se converter a [HTML](https://gl.wikipedia.org/wiki/HTML) dun xeito sinxelo.
 
 A vista de edición en markdown faise sinxela xa que non se usan máis que texto, con poucos caracteres non alfabéticos, como o son o `*` e `#`. Os ficheiros de markdown teñen unha extensión `.md` ou `.markdown`.
@@ -180,7 +178,6 @@ Amais das seccións, pódense establecer **regras e saltos de páxina**:
 ```
 
 #### Ecuacións
-
 R Markdown acepta a incrustación de fórmulas escritas en [LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics) e [MathML](http://www.w3.org/Math/).
 
 As ecuacións poden ir dos seguintes xeitos: - `$ecuación$` para ecuacións LaTeX en liña. Aquí non pode haber espazos entre os `$` e o texto; - `$$ ecuación $$` para ecuacións LaTeX na súa propia liña, - e `<math ...> </math>` para ecuacións MathML
@@ -188,7 +185,6 @@ As ecuacións poden ir dos seguintes xeitos: - `$ecuación$` para ecuacións LaT
 Para obter as fórmulas editadas, hai [asistentes en liña](http://mathstat.uohyd.ernet.in/equationeditor/equationeditor.php)
 
 #### R Markdown
-
 **R Markdown** é a implementación de Markdown para R. Está baseado na libraría **[knitr](http://yihui.name/knitr/)** e no conversor universal de documentos **[pandoc](http://pandoc.org/)** e integrado coa [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) **[RStudio](https://www.rstudio.com/)**.
 
 Con R Markdown xéranse documentos, informes ou presentacións de xeito dinámico. Grazas a iso, pódense xerar informes con resultados xerados dinamicamente. Cando xa están creados, os documentos poden conter todo o contido resultante (análises estatísticas, gráficos,...) e/ou o **código fonte de R** que se empregou para obtelos.
@@ -244,7 +240,6 @@ As principais opcións para os cabezallos de código de R son estes:
 | fig.height | 7           | Alto das imaxes de resultado, en polgadas   |
 
 #### YAML
-
 O cabezallo YAML controla o renderizado dos ficheiros `.rmd` de R Markdown. Un exemplo completo de YAML é este:
 
 ```
@@ -260,7 +255,7 @@ Cada entrada declara unha propiedade do ficheiro final. YAML acepta código de R
 
 As `outputs` que arestora acepta a IDE RStudio son `html_output` (saída en `html`), `pdf_document` (saída en `pdf`) e `word_document` (saída no formato privativo `.docx`). A información de como xerar `.pdf` está na sección de [Formato PDF para RMarkdown](http://rmarkdown.rstudio.com/pdf_document_format.html)).
 
-Na YAML tamén se poden definir propiedades das figuras, como o seu tamaño final ou se levan rodapés.
+Na YAML tamén se poden definir propiedades das figuras, como o seu tamaño final ou se levan rodapés:
 
 ```
 ---
@@ -288,11 +283,12 @@ h1 { font-weight: 400;
   font-size: 3.2rem;
   line-height: 1; }
 ```
-##### Creación de táboas
 
+##### Creación de táboas
 Librarías como [`xtable`](https://cran.r-project.org/web/packages/xtable) permiten a visualización de táboas, a creación de táboas de resultados e informes estatísticos para documentos HTML e LaTeX.
 
 Con datos de mostraxes en dunas neerlandesas e `xtable`:
+
 ```
 library(xtable)
 data(dune.env) # de vegan()
@@ -375,6 +371,7 @@ pandoc.table(head(dune.env), style = "grid", caption = "Dunas neerlandesas")
 #
 # Title: Dunas neerlandesas
 ```
+
 Aquí vemos os mesmos informes de `lm()` e `ANOVA()` mais con saída para `md` con pander:
 
 ```
@@ -432,7 +429,6 @@ pander(anova(fml))
 #### Procesado dos ficheiros R Markdown
 
 ##### rmarkdown
-
 Con Markdown conséguese eliminar todo o etiquetado de HTML. Con iso conséguese unha edición e lectura fácil. Con R Markdown conséguese incrustar código e producir informes dinámicos. Un esquema do proceso que temos feito até o de agora é o seguinte:
 
 ```
@@ -470,7 +466,6 @@ rmarkdown::render("rgal16.Rmd", html_document(
 ```
 
 ##### Pandoc
-
 [Pandoc](http://pandoc.org/) é unha navalla suíza: converte documentos de markdown, HTML, DocBook, LaTeX ou ODF a outros tantos formatos como HTML, Markdown, epub ou PDF. Como vimos, é o xestor de `rmarkdown` para a conversión.
 
 Unha alternativa a facer a chamada de conversión de formato desde R, é facer uso directo de `pandoc`. Un primeiro exemplo do seu uso, desde o terminal, é esta conversion de `markdown` a `html`:
@@ -505,11 +500,9 @@ pandoc rgal16.md -f markdown -t docx -s -o rgal16.docx
 ```
 
 ##### Pandoc e a bibliografía
-
 `pandoc` co seu complemento [`pandoc-citeproc`](http://pandoc.org/installing.html) facilita que os documentos convertidos procesen referencias biliográficas. Isto é, que se poden converter documentos `.md`, Markdown, a un `html`, `pdf`... incluíndo as citas na posición correcta, sen ter que o facer a man. As citas procésaas `pandoc-citeproc`, e faino para calquera tipo de formato de saída.
 
 Primeiro, a xestión dos recursos bibliográficos pódese realizar con [Zotero Reference Manager](https://www.zotero.org/). É xestor de bliografía libre completo, que nos permite compilar, almacenar en local e na nube a nosa bibliografía e exportala. As referencias bibliográficas que nos interesen pódense [exportar](https://www.zotero.org/support/quick_start_guide) a un ficheiro `.bib`, Bibtex, desde Zotero.
-
 
 As referencias exportadas nos ficheiros `bib` teñen un identificador que se pódese ver abrindo o ficheiro `.bib` e vendo o nome.
 
@@ -537,6 +530,7 @@ nocite: |
   @margalef_1955, @margalef_1953
 ...
 ```
+
 A localización da bibliografía hai que especificala en YAML:
 
 ```
@@ -550,6 +544,7 @@ csl: apa.csl
 bibliography: margalef.bib
 ---
 ```
+
 Ha de ser no final do texto onde se cree a lista de referencias bibliográficas:
 
 ```
@@ -566,6 +561,7 @@ options("citation_format" = "pandoc")
 refs <- read.bibtex("margalef.bib")
 ```
 No texto chamarase á estas bibliografía importada con:
+
 ```
 `r citep(refs[2])`
 # refs[2]
@@ -586,6 +582,7 @@ output: pdf_document:
   biblio-style: apsr
 ---
 ```
+
 Para os documentos finais `pdf` e de obriga empregar paquetes de LaTeX, como `natbib` or `biblatex`, que procesen as referencias bibliográficas. Os ficheiros finais `pdf` coa bibliografía incorporada deste xeito:
 
 ```
@@ -594,6 +591,7 @@ Para os documentos finais `pdf` e de obriga empregar paquetes de LaTeX, como `na
 # con todas as referencias obtidas de refs.bib
 pandoc documento_inicial.md -t latex --filter pandoc-citeproc --bibliography=refs.bib -o documento_final.pdf
 ```
+
 ### III. Publicación
 Toda vez que elaboramos unha análise de datos ou publicación rematada podemos empregar [Git](https://git-scm.com/) e publicar en [GitHub](https://github.com/).
 
@@ -621,29 +619,77 @@ fs_make_private(id)
 # ou públicos
 fs_make_public(id)
 ```
+
 ### IV. Instalación
-<!---
-Información de sistema operativo libre
---->
-<!---
-rstudio; rmarkdown
-rkward
---->
 
-<!---
-http://pandoc.org/installing.html
---->
+#### Instalación de R e IDEs
+Información xeral de *R*:
+* [Linux](https://cloud.r-project.org/bin/linux/)
+* [Microsoft Windows](https://cloud.r-project.org/bin/windows/)<sup>([SO privativo](https://en.wikipedia.org/wiki/Comparison_of_open-source_and_closed-source_software#Closed-source_software))</sup>
+* [Mac OS X](http://cran.us.r-project.org/bin/macosx/)<sup>([SO privativo](https://en.wikipedia.org/wiki/Comparison_of_open-source_and_closed-source_software#Closed-source_software))</sup>
 
-<!---
-Zotero
---->
+Información xeral de *IDEs* de R:
+* [RStudio](https://www.rstudio.com/products/rstudio/download/)
+* [RKWard](https://rkward.kde.org/)
 
-<!---
-info sobre LaTeX en linux, windows
---->
+Información de instalación de *Rstudio* e *RKWard* en dúas distros:
+* *Debian*: [Paquete de R para Debian](https://cloud.r-project.org/bin/linux/debian/)
+* *Ubuntu*: [Paquete de R para Ubuntu](https://cloud.r-project.org/bin/linux/ubuntu/). Dun xeito rápido para *Xenial*:
+```
+# Engadir o repositorio de R
+sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+# Engaidir R ao Ubuntu Keyring
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+# Base de R
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+# Interface R-Studio
+sudo apt-get install gdebi-core
+sudo gdebi rstudio-0.99.903-i386.deb
+# (ou) sudo gdebi rstudio-0.99.903-amd64.deb
+
+## RKWard
+sudo apt-get update
+sudo apt-get build-dep rkward
+apt-get source -b rkward
+```
+
+* *openSUSE*:
+- [software.opensuse.org/package/rstudio](https://software.opensuse.org/package/rstudio)
+- [software.opensuse.org/package/rkward](https://software.opensuse.org/package/rkward)
+- comprobar que `R-core, R-core-devel` estén instalados (`sudo zypper se r-core`, `sudo zypper in r-core r-core-devel`)
+
+#### Pandoc
+A instalación de pandoc está dispoñible na [sección de "install"](http://pandoc.org/installing.html) da súa web. En linux, préteselle atención a [](https://www.haskell.org/downloads/linux)
+
+* Para *Ubuntu*:
+```
+# Instalar cabal
+sudo apt-get install cabal-install
+```
+* Para *openSUSE*: [software.opensuse.org/package/pandoc](https://software.opensuse.org/package/pandoc)
+
+Despois da instalación en Linux, intálese `pandoc-citeproc` e engádase a dirección de cabal á o cartafol de usuario:
+```
+# Actualizar a base de datos de cabal
+cabal update
+#Use cabal to install pandoc (and pandoc-citeproc if wanted)
+cabal install pandoc pandoc-citeproc
+# Check pandoc version to confirm installed
+pandoc --version
+# Engadir a dirección de Haskel ao cartafol do teu usuario
+PATH=$HOME/.cabal/bin:$PATH command to your ~/.bashrc
+```
+* *Microsoft Windows* e *OS X*: [instalador de pandoc](https://github.com/jgm/pandoc/releases/tag/1.17.2). Cabe asegurarse a instalación de [Miktex](http://miktex.org/).
+
+#### Zotero
+Zotero sérve de xestor de bibliografía. Información:
+* [xeral](https://www.zotero.org)
+* [Standalone e Engadido de Mozilla Firefox](https://www.zotero.org/download/)
+* [de uso](https://www.zotero.org/support/).
 
 ### V. Recursos xerais e de R para ciencia
-
 
 1.	[R for Data Science. Garrett Grolemund & Hadley Wickham. O'Reilly 2016](http://r4ds.had.co.nz/)
 2.	[Advanced R. Hadley Wickham](http://adv-r.had.co.nz/)
