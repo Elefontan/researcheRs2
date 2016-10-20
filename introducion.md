@@ -1,4 +1,4 @@
-Reproducibilidade en ciencia con R: da minaría de datos á publicación
+Reproducibilidade en ciencia con R: da obtención de datos á publicación
 ---------------------------------------------------------------------
 
 ### Introdución
