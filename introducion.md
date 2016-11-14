@@ -328,7 +328,7 @@ print(xtable(anova(fml)), type="html", include.rownames = TRUE)
 #   </table>
 ```
 
-Outra librería é `[pander](http://rapporter.github.io/pander/)`. Esta crea directamente resumos no formato Markdown.
+Outra librería é [`pander`](http://rapporter.github.io/pander/). Esta crea directamente resumos no formato Markdown.
 
 ```
 # Táboas de datos
